@@ -1,0 +1,59 @@
+{
+  "name": "zeal-shortcut",
+  "displayName": "zeal-shortcut",
+  "description": "Shortcut for Zeal",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.106.1"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onCommand:zeal-shortcut.queryWord"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "zeal-shortcut.queryWord",
+        "title": "Zeal: Query Word"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "zeal-shortcut.queryWord",
+        "key": "ctrl+shift+h",
+        "when": "editorTextFocus"
+      }
+    ],
+    "configuration": {
+      "title": "Zeal Shortcut",
+      "properties": {
+        "zealShortcut.zealPath": {
+          "type": "string",
+          "default": "",
+          "description": "Absolute path to the Zeal binary. Example on macOS: /Applications/Zeal.app/Contents/MacOS/Zeal"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.106.1",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "typescript-eslint": "^8.46.3",
+    "eslint": "^9.39.1",
+    "typescript": "^5.9.3",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
